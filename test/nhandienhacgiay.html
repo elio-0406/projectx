@@ -6,7 +6,7 @@
   <title>Nhận diện Hạc Giấy</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-gray-100 min-h-screen flex items-center justify-center">
+<body class="bg-black min-h-screen flex items-center justify-center">
 
   <div class="bg-white p-8 rounded-2xl shadow-lg w-full max-w-md text-center">
     <h1 class="text-2xl font-bold mb-4">Nhận diện hạc giấy</h1>
@@ -29,12 +29,21 @@
 
     <button
       onclick="analyzeImage()"
-      class="bg-blue-600 text-white px-6 py-3 rounded hover:bg-blue-700 transition"
+      class="bg-black-600 text-white px-6 py-3 rounded hover:bg-black-700 transition"
     >
       Kiểm tra
     </button>
 
     <p id="result" class="mt-4 text-lg font-semibold"></p>
+
+    <div class="mt-6 flex justify-start">
+      <a 
+        href="https://tanducuoicung.wordpress.com/2026/04/05/doat-xa-chuong-8-1/"
+        class="inline-block hover:underline mr-3 transition"
+      >
+        Quay về nhập mã
+      </a>
+    </div>
   </div>
 
   <script>
@@ -82,7 +91,7 @@
                   {
                     parts: [
                       {
-                        text: 'Ảnh này có phải là hạc giấy origami không?'
+                        text: 'Ảnh này có phải là hạc giấy origami không? Trả lời ngắn gọn Có hoặc Không.'
                       },
                       {
                         inline_data: {
@@ -103,7 +112,13 @@
           
           const output = data.candidates?.[0]?.content?.parts?.[0]?.text || 'Không nhận diện được kết quả';
 
-          resultText.innerText = output;
+          if (output === 'Có') {
+            resultText.innerText = '2003';
+          } else if (output === 'Không') {
+            resultText.innerText = 'Không nhận diện được, hãy gấp lại.';
+          } else {
+            resultText.innerText = output;
+          }
 
         } catch (error) {
           console.error(error);
