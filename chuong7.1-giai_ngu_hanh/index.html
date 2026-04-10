@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-black">
+    <div>
+        <h1 class="text-4xl text-center text-white mt-10">
+            CHƯƠNG 7.1: GIẢI NGŨ HÀNH
+        </h1>
+
+        <p class="text-white text-center mt-4 text-lg">
+            Chọn đúng thứ tự để giải trận
+        </p>
+    </div>
+    
+    <div class="flex item-center justify-center">
+        <div class="relative w-[400px] h-[400px] mt-10">
+            <!-- SVG Pentagon Lines -->
+            <svg class="absolute inset-0 w-full h-full" viewBox="0 0 400 400">
+            <polygon
+                points="200,40 340,150 285,330 115,330 60,150"
+                fill="none"
+                stroke="white"
+                stroke-width="2"
+            />
+            </svg>
+
+            <button
+                id="startBtn"
+                class="absolute top-1/2 left-1/2
+                        -translate-x-1/2 -translate-y-1/2
+                        w-28 h-28
+                        rounded-full
+                        overflow-hidden
+                        shadow-lg
+                        hover:scale-105
+                        active:scale-95
+                        transition
+                        border-4 border-gray-500
+                        bg-black
+                        text-white"
+                >
+                <img
+                    src="assets/img/logo-am-duong-bat-quai-vector-57.jpg"
+                    alt="Bát quái"
+                    class="w-full h-full object-cover"
+                >
+            </button>
+
+            <!-- Kim -->
+            <button class="circle-btn bg-[#a4bbc9]" style="top: 0px; left: 160px;">
+            Kim
+            </button>
+
+            <!-- Mộc -->
+            <button class="circle-btn bg-[#618339]" style="top: 110px; left: 300px;">
+            Mộc
+            </button>
+
+            <!-- Thủy -->
+            <button class="circle-btn bg-[#01708b]" style="top: 290px; left: 245px;">
+            Thủy
+            </button>
+
+            <!-- Hỏa -->
+            <button class="circle-btn bg-[#ca1a2f]" style="top: 290px; left: 75px;">
+            Hỏa
+            </button>
+
+            <!-- Thổ -->
+            <button class="circle-btn bg-yellow-600" style="top: 110px; left: 20px;">
+            Thổ
+            </button>
+        </div>
+    </div>
+
+    <audio
+        id="bgm"
+        loop
+        preload="auto"
+        muted
+    >
+        <source src="assets/sounds/background-chu_lang_nghiem.mp3" 
+            type="audio/mpeg">
+    </audio>
+
+    <script src="script.js"></script>
+</body>
+</html>
