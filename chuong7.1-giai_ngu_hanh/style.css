@@ -52,3 +52,28 @@
   }
 }
 
+.disabledBtn {
+    pointer-events: none;
+    opacity: 0.4;
+}
+
+body {
+    background-image: url(/chuong7.1-giai_ngu_hanh/assets/img/d8960438-fd2d-4f0f-8d91-185847860e03.jpg);
+    background-size: contain;  
+    background-position: center; 
+    background-repeat: repeat;  
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5); 
+  pointer-events: none; 
+  z-index: 0;
+}
+
+.main-content {
+  position: relative;
+  z-index: 1;
+}

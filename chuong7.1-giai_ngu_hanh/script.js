@@ -12,7 +12,7 @@ let attemptsLeft = MAX_ATTEMPTS;
 
 // ===== Timer =====
 let timerInterval = null;
-let timeLeft = 5; 
+let timeLeft = 15 * 60; 
 let gameStarted = false;
 
 // ===== Khởi tạo =====
@@ -90,7 +90,25 @@ function isCorrectOrder() {
 
 // ===== Khi thắng =====
 function handleWin() {
-  alert("Bạn đã giải đúng trận ngũ hành!");
+  const winSound = document.getElementById("winSound");
+    const bgm = document.getElementById("bgm");
+
+    if (winSound) {
+      bgm.volume = 0.05;
+      winSound.volume = 1;
+      winSound.play().catch((err) => console.error(err));
+
+      // Chờ sound chạy rồi chuyển trang
+      setTimeout(() => {
+        window.location.href = "https://tanducuoicung.wordpress.com/2026/04/05/doat-xa-chuong-12/"; 
+      }, 16000);
+    } else {
+      // Nếu không có sound thì chuyển trang ngay
+      window.location.href = "https://tanducuoicung.wordpress.com/2026/04/05/doat-xa-chuong-12/"; 
+    }
+
+  disableStartButton();
+
   resetGame();
 }
 
@@ -102,9 +120,32 @@ function handleFail() {
     alert(`Sai rồi! Bạn còn ${attemptsLeft} lần thử.`);
     resetRound();
   } else {
-    alert("Bạn đã thua! Hết lượt thử.");
+    const loseSound = document.getElementById("loseSound");
+    const bgm = document.getElementById("bgm");
+
+    if (loseSound) {
+      bgm.volume = 0.05;
+      loseSound.volume = 1;
+      loseSound.play().catch((err) => console.error(err));
+
+      // Chờ sound chạy rồi chuyển trang
+      setTimeout(() => {
+        window.location.href = "https://tanducuoicung.wordpress.com/2026/04/05/doat-xa-chuong-12-1/"; 
+      }, 12000);
+    } else {
+      // Nếu không có sound thì chuyển trang ngay
+      window.location.href = "https://tanducuoicung.wordpress.com/2026/04/05/doat-xa-chuong-12-1/"; 
+    }
+
+    disableStartButton();
+
     resetGame();
   }
+}
+
+function disableStartButton() {
+  const startBtn = document.getElementById("startBtn");
+  startBtn.classList.add("disabledBtn");
 }
 
 // ===== Reset chỉ lượt hiện tại =====
@@ -179,8 +220,9 @@ function startTimer() {
 
     if (timeLeft <= 0) {
       clearInterval(timerInterval);
-      alert("Hết thời gian!");
       resetGame();
+      attemptsLeft = 0;
+      handleFail();
     }
   }, 1000);
 }
@@ -204,7 +246,7 @@ function playBackgroundMusic() {
   const bgm = document.getElementById("bgm");
 
   bgm.muted = false;
-  bgm.volume = 0.15;
+  bgm.volume = 0.2;
 
   bgm.play();
 
